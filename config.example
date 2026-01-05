@@ -1,0 +1,118 @@
+# Configuration WIFI Manager
+# Ce fichier documente les paramètres configurables
+
+# ========================================
+# CONFIGURATION DU SCANNER ARP
+# ========================================
+
+# Timeout pour les réponses ARP (en secondes)
+ARP_TIMEOUT = 2
+
+# Nombre de tentatives par paquet
+ARP_RETRIES = 2
+
+# ========================================
+# CONFIGURATION DE L'INTERFACE
+# ========================================
+
+# Titre de la fenêtre
+WINDOW_TITLE = "WIFI Manager - Scan ARP"
+
+# Dimensions par défaut
+WINDOW_WIDTH = 1000
+WINDOW_HEIGHT = 600
+
+# CIDR par défaut (auto-détecté dans le code)
+DEFAULT_CIDR = "192.168.1.0/24"
+
+# ========================================
+# CONFIGURATION DU PING
+# ========================================
+
+# Timeout pour les pings (en secondes)
+PING_TIMEOUT = 5
+
+# Nombre de paquets ping à envoyer
+PING_COUNT = 1
+
+# ========================================
+# CONFIGURATION OUI DATABASE
+# ========================================
+
+# URL du fichier OUI officiel IEEE
+OUI_URL = "https://standards-oui.ieee.org/oui/oui.txt"
+
+# Dossier cache OUI (dans ~/.wifi_manager/)
+OUI_CACHE_DIR = "~/.wifi_manager"
+
+# Auto-télécharger le fichier OUI au démarrage
+OUI_AUTO_DOWNLOAD = True
+
+# ========================================
+# CONFIGURATION EXPORT CSV
+# ========================================
+
+# Encodage du fichier CSV
+CSV_ENCODING = "utf-8"
+
+# Séparateur CSV
+CSV_DELIMITER = ","
+
+# Format timestamp pour les noms de fichiers
+CSV_TIMESTAMP_FORMAT = "%Y%m%d_%H%M%S"
+
+# ========================================
+# CONFIGURATION LOGGING
+# ========================================
+
+# Niveau de verbosité
+VERBOSE = False
+
+# Afficher les logs de Scapy
+SCAPY_VERBOSE = False
+
+# ========================================
+# CONFIGURATIONS PAR SCÉNARIO
+# ========================================
+
+# Scan rapide (réseau petit)
+QUICK_SCAN = {
+    "timeout": 1,
+    "retries": 1,
+    "include_ping": False,
+}
+
+# Scan normal (réseau typique)
+NORMAL_SCAN = {
+    "timeout": 2,
+    "retries": 2,
+    "include_ping": False,
+}
+
+# Scan complet (avec latences)
+FULL_SCAN = {
+    "timeout": 3,
+    "retries": 2,
+    "include_ping": True,
+}
+
+# Scan lent (pour réseaux distants/lents)
+SLOW_SCAN = {
+    "timeout": 5,
+    "retries": 3,
+    "include_ping": True,
+}
+
+# ========================================
+# NOTES
+# ========================================
+
+# Pour utiliser une configuration personnalisée:
+# 1. Modifiez les valeurs ci-dessus
+# 2. Importez dans le code : from config import WINDOW_WIDTH
+# 3. Relancez l'application
+
+# Pour un réseau spécifique:
+# - Petit réseau /28-/24: utiliser QUICK_SCAN
+# - Réseau standard /24-/23: utiliser NORMAL_SCAN
+# - Réseau large /22-/20: utiliser SLOW_SCAN

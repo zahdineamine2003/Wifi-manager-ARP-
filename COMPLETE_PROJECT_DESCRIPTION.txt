@@ -1,0 +1,1133 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    WIFI MANAGER PRO - COMPLETE PROJECT DESCRIPTION          ║
+║                    Enterprise Network Management System                      ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════════════════
+📋 TABLE OF CONTENTS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Project Overview
+2. Core Features & Capabilities
+3. Technical Architecture
+4. User Interface & Experience
+5. Advanced Features
+6. Network Security Features
+7. Smart TV Control System
+8. Messaging System
+9. Real-Time Monitoring & Analytics
+10. Device Management
+11. Export & Reporting
+12. Installation & Requirements
+13. How It Works (Technical Details)
+14. Use Cases & Applications
+15. Security Considerations
+16. Troubleshooting & Support
+
+
+═══════════════════════════════════════════════════════════════════════════════
+1. 🎯 PROJECT OVERVIEW
+═══════════════════════════════════════════════════════════════════════════════
+
+WiFi Manager Pro is a comprehensive enterprise-grade network management 
+application built with Python and PyQt5. It provides network administrators, 
+IT professionals, and power users with advanced tools to monitor, manage, and 
+control devices on their local network.
+
+The application combines network scanning, device identification, real-time 
+monitoring, security features, and remote control capabilities into a single, 
+modern, user-friendly desktop application.
+
+KEY HIGHLIGHTS:
+- Real-time network device discovery and monitoring
+- Advanced ARP scanning with vendor identification
+- Device disconnection and network security features
+- Smart TV remote control functionality
+- Multi-protocol messaging system
+- Live network statistics and analytics
+- Professional dark-themed UI with graphs
+- Cross-platform support (Windows, Linux, macOS)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+2. 🚀 CORE FEATURES & CAPABILITIES
+═══════════════════════════════════════════════════════════════════════════════
+
+2.1 NETWORK SCANNING
+──────────────────────
+✓ ARP (Address Resolution Protocol) scanning for device discovery
+✓ Customizable CIDR network range (e.g., 192.168.1.0/24)
+✓ Auto-detection of network configuration
+✓ Adjustable timeout settings (1-10 seconds)
+✓ Optional ping mode for latency measurement
+✓ Multi-threaded scanning for optimal performance
+✓ Real-time progress updates during scan
+✓ Non-blocking UI during scan operations
+
+2.2 DEVICE IDENTIFICATION
+──────────────────────────
+✓ MAC address detection for all network devices
+✓ IP address identification
+✓ Vendor/manufacturer lookup via OUI database
+✓ Automatic device name resolution
+✓ Device type detection (TV, phone, computer, etc.)
+✓ Signal strength estimation
+✓ Network bandwidth usage per device
+✓ Connection latency measurement
+
+2.3 NETWORK MONITORING
+──────────────────────────
+✓ Real-time device count tracking
+✓ Active device monitoring
+✓ Network bandwidth aggregation
+✓ System uptime calculation
+✓ Historical data tracking (last 5 minutes)
+✓ Live updating graphs and charts
+✓ Dual-axis monitoring charts
+✓ Color-coded signal strength indicators
+
+2.4 DEVICE MANAGEMENT
+──────────────────────────
+✓ Individual device disconnection (kick)
+✓ Mass device disconnection (kick all)
+✓ Configurable kick duration
+✓ Selective device exclusion
+✓ Device action history
+✓ Real-time device status updates
+
+2.5 MESSAGING SYSTEM
+──────────────────────────
+✓ Multi-protocol message delivery
+✓ Web browser hijacking for message display
+✓ UDP/TCP/Broadcast messaging
+✓ Windows popup notifications (forced)
+✓ HTTP POST notifications
+✓ Multi-protocol simultaneous transmission
+✓ Customizable message content
+✓ Port configuration
+
+2.6 SMART TV CONTROL
+──────────────────────────
+✓ Automatic TV detection on network
+✓ Multi-brand TV support (Samsung, LG, Sony, etc.)
+✓ Wake-on-LAN functionality
+✓ Power control (on/off)
+✓ Volume control (up/down/mute)
+✓ Channel control (up/down)
+✓ Navigation controls (up/down/left/right/OK)
+✓ Menu and back button support
+✓ Input source selection
+✓ Netflix/YouTube direct launch
+
+2.7 DATA EXPORT
+──────────────────────────
+✓ CSV export with UTF-8 encoding
+✓ Timestamped filenames
+✓ Complete device information export
+✓ Custom file location selection
+✓ Formatted data for Excel/spreadsheets
+
+
+═══════════════════════════════════════════════════════════════════════════════
+3. 🏗️ TECHNICAL ARCHITECTURE
+═══════════════════════════════════════════════════════════════════════════════
+
+3.1 PROJECT STRUCTURE
+──────────────────────────
+WIFI_Manager/
+├── main.py                    # Application entry point
+├── scanner/                   # Core scanning modules
+│   ├── arp_scanner.py        # ARP scanning engine
+│   ├── name_resolver.py      # Device name resolution
+│   ├── tv_controller.py      # Smart TV control logic
+│   └── utils.py              # Utilities (OUI, CIDR, CSV, Config)
+├── ui/                        # User interface
+│   └── main_window.py        # Main PyQt5 window
+├── message_listener.py        # Standalone message receiver
+├── requirements.txt           # Python dependencies
+├── WIFI_Manager.spec         # PyInstaller configuration
+└── Documentation files
+
+3.2 TECHNOLOGY STACK
+──────────────────────────
+• Python 3.7+ (Core language)
+• PyQt5 (GUI framework)
+• Scapy (Network packet manipulation)
+• Matplotlib (Data visualization)
+• Requests (HTTP communications)
+• WakeOnLan (TV wake functionality)
+• Threading (Concurrent operations)
+• Socket (Network communications)
+
+3.3 KEY COMPONENTS
+──────────────────────────
+
+ARPScanner Class:
+- Performs ARP discovery on specified network ranges
+- Supports both synchronous and asynchronous scanning
+- Handles ping operations for latency measurement
+- Thread-safe operation with progress callbacks
+
+OUIDatabase Class:
+- Downloads and maintains IEEE OUI database
+- Provides vendor lookup from MAC addresses
+- Automatic database updates
+- Cached lookups for performance
+
+TVController Class:
+- Multi-brand Smart TV support
+- CEC protocol implementation
+- Wake-on-LAN integration
+- Brand-specific command mapping
+
+DeviceKicker Class:
+- ARP spoofing for device disconnection
+- Gateway detection and validation
+- Timed and indefinite kick modes
+- Safe stop mechanism
+
+MessageSender Class:
+- Multi-protocol message delivery
+- Web traffic hijacking
+- UDP/TCP socket messaging
+- Windows remote notification
+
+MainWindow Class:
+- Complete PyQt5 user interface
+- Tabbed interface (Devices, Monitoring, Logs)
+- Real-time chart updates
+- Thread-safe UI updates
+
+
+═══════════════════════════════════════════════════════════════════════════════
+4. 💻 USER INTERFACE & EXPERIENCE
+═══════════════════════════════════════════════════════════════════════════════
+
+4.1 DESIGN PHILOSOPHY
+──────────────────────────
+- Modern, professional dark theme
+- Color-coded information for quick recognition
+- Gradient buttons for visual appeal
+- Minimal, intuitive layout
+- Real-time feedback on all operations
+- Enterprise-grade appearance
+
+4.2 MAIN INTERFACE SECTIONS
+──────────────────────────
+
+┌─ HEADER BAR ─────────────────────────────────────────────────────┐
+│ • Application logo and title                                      │
+│ • Network statistics cards:                                       │
+│   - Total devices (blue)                                          │
+│   - Active devices (green)                                        │
+│   - Network bandwidth (yellow)                                    │
+│   - System uptime (green)                                         │
+└───────────────────────────────────────────────────────────────────┘
+
+┌─ CONFIG BAR ─────────────────────────────────────────────────────┐
+│ • CIDR network input with auto-suggestion                        │
+│ • Timeout slider (1-10 seconds)                                   │
+│ • Ping mode checkbox                                              │
+│ • Auto-detect network button                                      │
+│ • Security status indicators:                                     │
+│   - Firewall status                                               │
+│   - WPA3 encryption status                                        │
+│   - Intrusion detection count                                     │
+└───────────────────────────────────────────────────────────────────┘
+
+┌─ LEFT SIDEBAR ───────────────────────────────────────────────────┐
+│ Quick Actions Grid (8 main buttons):                              │
+│ • 🔍 Scan - Start network scan                                    │
+│ • 🔄 Refresh - Update device table                                │
+│ • 💾 Export - Save results to CSV                                 │
+│ • 📊 Stats - View statistics                                      │
+│ • 📨 Message - Send message to device                             │
+│ • 💥 Kick All - Disconnect all devices                            │
+│ • 🛑 Stop - Stop current kick operation                           │
+│ • 📺 TV Remote - Control Smart TV                                 │
+└───────────────────────────────────────────────────────────────────┘
+
+┌─ MAIN CONTENT (TABS) ────────────────────────────────────────────┐
+│                                                                    │
+│ TAB 1: 🌐 Connected Devices                                       │
+│ ├─ Device count header                                            │
+│ ├─ Clear button                                                   │
+│ └─ Device table with columns:                                     │
+│    • Type (icon)                                                  │
+│    • Device name                                                  │
+│    • IP address                                                   │
+│    • MAC address                                                  │
+│    • Vendor/manufacturer                                          │
+│    • Signal strength                                              │
+│    • Latency (ping)                                               │
+│    • Network band (2.4GHz/5GHz)                                   │
+│    • Action buttons (Kick, Message, TV)                           │
+│                                                                    │
+│ TAB 2: 📈 Real-Time Monitoring                                    │
+│ ├─ Combined dual-axis graph:                                      │
+│ │  • Device count over time (blue/green)                          │
+│ │  • Average signal strength (purple)                             │
+│ └─ 5-minute rolling window                                        │
+│                                                                    │
+│ TAB 3: 📊 System Logs                                             │
+│ └─ Real-time event log with timestamps                            │
+│    • Scan operations                                              │
+│    • Device detection events                                      │
+│    • Error messages                                               │
+│    • Action confirmations                                         │
+│                                                                    │
+└───────────────────────────────────────────────────────────────────┘
+
+┌─ STATUS BAR ─────────────────────────────────────────────────────┐
+│ • System status indicator (green dot)                             │
+│ • Application version                                             │
+│ • Last update timestamp                                           │
+│ • Documentation and support links                                 │
+└───────────────────────────────────────────────────────────────────┘
+
+4.3 COLOR CODING SYSTEM
+──────────────────────────
+Blue (#0078d4)     - Primary actions, device counts
+Green (#28a745)    - Success states, active devices
+Yellow (#ffc107)   - Warnings, bandwidth
+Purple (#9c27b0)   - Statistics, monitoring
+Red (#dc3545)      - Destructive actions, critical alerts
+Orange (#ff9800)   - Messaging features
+
+
+═══════════════════════════════════════════════════════════════════════════════
+5. 🎮 ADVANCED FEATURES
+═══════════════════════════════════════════════════════════════════════════════
+
+5.1 AUTOMATED NETWORK DETECTION
+────────────────────────────────
+The application can automatically detect your network configuration:
+- Identifies local IP address
+- Suggests appropriate CIDR range
+- Detects subnet mask
+- Finds network gateway
+- One-click configuration
+
+5.2 INTELLIGENT DEVICE RECOGNITION
+────────────────────────────────────
+- Vendor identification via MAC OUI lookup
+- Device type detection (Smart TV, phone, computer, router, etc.)
+- Hostname resolution when available
+- Smart icons based on device type
+- Brand-specific TV detection
+
+5.3 PERFORMANCE OPTIMIZATION
+────────────────────────────────
+- Multi-threaded scanning for speed
+- Non-blocking UI operations
+- Efficient data structures (deque for monitoring)
+- Cached vendor lookups
+- Optimized graph rendering
+- Background thread management
+
+5.4 ERROR HANDLING & RECOVERY
+────────────────────────────────
+- Graceful permission error handling
+- Network timeout management
+- Invalid CIDR validation
+- Thread cleanup on errors
+- User-friendly error messages
+- Automatic retry mechanisms
+
+
+═══════════════════════════════════════════════════════════════════════════════
+6. 🛡️ NETWORK SECURITY FEATURES
+═══════════════════════════════════════════════════════════════════════════════
+
+6.1 DEVICE KICKING (ARP SPOOFING)
+─────────────────────────────────
+HOW IT WORKS:
+The application uses ARP spoofing to temporarily disconnect devices from the 
+network by intercepting their gateway communication.
+
+SINGLE DEVICE KICK:
+• Right-click a device in the table
+• Select "Kick Device"
+• Choose duration (seconds) or indefinite
+• Device loses network connectivity
+• Can be stopped manually anytime
+
+MASS DEVICE KICK:
+• Click "💥 Kick All" button
+• Automatically excludes your own device
+• Confirms with warning dialog
+• Kicks all other network devices simultaneously
+• Configurable duration for all devices
+• Shows success/failure count
+
+SAFETY FEATURES:
+• Cannot kick your own device
+• Confirmation required for all kicks
+• Visual feedback during operation
+• Clean stop mechanism
+• Gateway validation before execution
+• Requires administrator privileges
+
+6.2 SECURITY STATUS MONITORING
+────────────────────────────────
+The config bar displays:
+• Firewall status (Active/Inactive)
+• WPA3 encryption status
+• Intrusion detection count
+• Real-time security alerts
+
+6.3 NETWORK INTRUSION DETECTION
+────────────────────────────────
+• Monitors for unknown devices
+• Tracks device connections/disconnections
+• Alerts on suspicious activity
+• Historical device tracking
+
+
+═══════════════════════════════════════════════════════════════════════════════
+7. 📺 SMART TV CONTROL SYSTEM
+═══════════════════════════════════════════════════════════════════════════════
+
+7.1 AUTOMATIC TV DETECTION
+───────────────────────────
+The system automatically detects Smart TVs on your network by:
+• Scanning vendor information (Samsung, LG, Sony, Philips, etc.)
+• Analyzing device types
+• Checking for CEC/HDMI-CEC capabilities
+• Identifying TV-specific network services
+
+Supported TV Brands:
+• Samsung (Tizen, Smart TV)
+• LG (webOS)
+• Sony (Android TV)
+• Philips
+• Panasonic
+• Toshiba
+• Sharp
+• Vizio
+• TCL
+• Hisense
+
+7.2 TV CONTROL FEATURES
+────────────────────────
+
+POWER MANAGEMENT:
+• ⚡ Wake-on-LAN (WoL) - Turn TV on remotely
+• 🔴 Power toggle - Turn TV on/off
+• Standby mode control
+
+VOLUME CONTROL:
+• 🔼 Volume Up
+• 🔽 Volume Down
+• 🔇 Mute/Unmute
+
+CHANNEL CONTROL:
+• ⬆️ Channel Up
+• ⬇️ Channel Down
+• Direct channel selection
+
+NAVIGATION:
+• D-Pad controls (Up, Down, Left, Right)
+• OK/Enter button
+• Back button
+• Menu/Settings access
+
+INPUT CONTROL:
+• HDMI input switching
+• Source selection
+• Home menu access
+
+APP LAUNCHING:
+• Netflix direct launch
+• YouTube direct launch
+• Other app launchers (brand-dependent)
+
+7.3 TV REMOTE DIALOG
+─────────────────────
+When you click "📺 TV Remote":
+1. App scans for detected TVs
+2. Shows selection dialog if multiple TVs
+3. Opens remote control interface with:
+   - TV information (IP, MAC, brand)
+   - All control buttons laid out intuitively
+   - Real-time command feedback
+   - Connection status
+
+
+═══════════════════════════════════════════════════════════════════════════════
+8. 📨 MESSAGING SYSTEM
+═══════════════════════════════════════════════════════════════════════════════
+
+8.1 MESSAGE DELIVERY PROTOCOLS
+────────────────────────────────
+
+WEB BROWSER HIJACK ⭐ (RECOMMENDED):
+• Intercepts web traffic on target device
+• Displays message in browser automatically
+• No setup required on target
+• Works by ARP spoofing + HTTP redirect
+• Configurable duration (10-300 seconds)
+• Most reliable method for remote messages
+
+WINDOWS POPUP (FORCE):
+• Attempts system-level popup on Windows
+• Requires WinRM/Remote Desktop enabled
+• Usually blocked by security policies
+• Requires administrator rights
+• Best for corporate environments
+
+UDP MESSAGING:
+• Fast, connectionless protocol
+• Requires message_listener.py on target
+• Lightweight and efficient
+• Can broadcast to multiple devices
+• Port configurable (default: 9999)
+
+TCP MESSAGING:
+• Reliable, connection-oriented
+• Requires open port on target
+• Ensures message delivery
+• Slower than UDP
+• Good for critical messages
+
+BROADCAST:
+• Sends to all devices simultaneously
+• Network-wide message distribution
+• No individual targeting
+• Good for announcements
+
+MULTI-PROTOCOL:
+• Tries multiple protocols simultaneously
+• Shows success rate for each
+• Maximizes delivery chance
+• Detailed results per protocol
+
+HTTP POST:
+• Standard web notification
+• Can trigger webhooks
+• Good for API integrations
+• Configurable endpoint
+
+8.2 MESSAGE LISTENER
+─────────────────────
+A companion program (message_listener.py) can be installed on target devices:
+• Lightweight Python GUI
+• Listens on UDP port
+• Shows popup notifications
+• Cross-platform (Windows/Mac/Linux)
+• Easy one-click setup
+
+8.3 SENDING A MESSAGE
+──────────────────────
+1. Scan network and select a device
+2. Click "📨 Message" button
+3. Message dialog opens showing:
+   - Target device information
+   - Protocol selection dropdown
+   - Port configuration
+   - Message text area
+   - Protocol-specific info
+4. Type your message
+5. Click OK to send
+6. Receive confirmation and results
+
+
+═══════════════════════════════════════════════════════════════════════════════
+9. 📊 REAL-TIME MONITORING & ANALYTICS
+═══════════════════════════════════════════════════════════════════════════════
+
+9.1 LIVE STATISTICS
+────────────────────
+Updated every 5 seconds:
+
+TOTAL DEVICES:
+• Count of all discovered devices
+• Includes active and inactive
+• Real-time updates during scan
+
+ACTIVE DEVICES:
+• Devices with latency < 100ms
+• Indicates responsive devices
+• Color-coded green for visibility
+
+NETWORK BANDWIDTH:
+• Aggregate of all device bandwidths
+• Calculated from connection speeds
+• Displayed in Mbps or Gbps
+• Yellow color coding
+
+SYSTEM UPTIME:
+• Scan success rate percentage
+• Application runtime tracking
+• Reliability indicator
+• Green color coding
+
+9.2 MONITORING GRAPHS
+───────────────────────
+DUAL-AXIS COMBINED GRAPH:
+
+Left Y-Axis (Blue/Green):
+• Total devices over time (blue line)
+• Active devices over time (green dashed line)
+• Markers every few data points
+• Auto-scaling based on device count
+
+Right Y-Axis (Purple):
+• Average signal strength percentage
+• Gradient fill for visual appeal
+• Fixed 0-100% scale
+• Purple color coding
+
+X-Axis:
+• Time in HH:MM:SS format
+• Last 5 minutes of data (60 points)
+• 5-second update interval
+• Rolling window (oldest dropped)
+
+VISUAL FEATURES:
+• Dark background (#1e1e1e)
+• Grid lines for readability
+• Professional legends
+• Color-coded axes
+• Smooth line rendering
+• Real-time updates without flicker
+
+9.3 HISTORICAL DATA
+────────────────────
+The application maintains:
+• 60 data points (5 minutes)
+• Device count history
+• Active device history
+• Signal strength history
+• Time stamps for each point
+
+
+═══════════════════════════════════════════════════════════════════════════════
+10. 🎯 DEVICE MANAGEMENT
+═══════════════════════════════════════════════════════════════════════════════
+
+10.1 DEVICE TABLE
+──────────────────
+The main device table displays comprehensive information:
+
+COLUMNS:
+1. TYPE - Device type icon (📱 🖥️ 📺 🖨️ 🌐)
+2. DEVICE - Resolved hostname or vendor name
+3. IP ADDRESS - IPv4 address
+4. MAC ADDRESS - Physical address (6 pairs of hex)
+5. VENDOR - Manufacturer from OUI lookup
+6. SIGNAL - Connection strength (0-100%)
+7. LATENCY - Ping response time in ms
+8. BAND - Network frequency (2.4GHz/5GHz)
+9. ACTIONS - Quick action buttons
+
+FEATURES:
+• Sortable columns
+• Row selection
+• Alternating row colors for readability
+• Automatic column width adjustment
+• Right-click context menu
+• Double-click for details
+
+10.2 DEVICE ACTIONS
+────────────────────
+For each device, you can:
+• Send messages
+• Kick/disconnect
+• Control (if TV)
+• View details
+• Copy information
+• Add to favorites (future feature)
+
+10.3 FILTERING & SEARCH
+────────────────────────
+(Implemented in UI logic)
+• Filter by device type
+• Search by IP/MAC/Vendor
+• Show only active devices
+• Sort by any column
+
+
+═══════════════════════════════════════════════════════════════════════════════
+11. 💾 EXPORT & REPORTING
+═══════════════════════════════════════════════════════════════════════════════
+
+11.1 CSV EXPORT
+────────────────
+Click "💾 Export" to save scan results:
+
+FILE FORMAT:
+• Standard CSV (Comma-Separated Values)
+• UTF-8 encoding for special characters
+• Headers included
+• Excel-compatible
+
+FILENAME:
+• Automatic: scan_YYYYMMDD_HHMMSS.csv
+• Example: scan_20260105_143022.csv
+• Custom location via save dialog
+
+EXPORTED DATA:
+• IP Address
+• MAC Address
+• Vendor/Manufacturer
+• Device Name (if resolved)
+• Ping Latency (if available)
+• Signal Strength
+• Network Band
+• Discovery Timestamp
+
+USAGE:
+• Open in Excel/LibreOffice Calc
+• Import into databases
+• Share with team members
+• Generate reports
+• Historical comparison
+
+
+═══════════════════════════════════════════════════════════════════════════════
+12. 📦 INSTALLATION & REQUIREMENTS
+═══════════════════════════════════════════════════════════════════════════════
+
+12.1 SYSTEM REQUIREMENTS
+─────────────────────────
+OPERATING SYSTEM:
+• Windows 7/8/10/11
+• Linux (Ubuntu, Debian, Fedora, etc.)
+• macOS 10.12+
+
+PYTHON:
+• Python 3.7 or higher
+• 64-bit recommended
+
+PERMISSIONS:
+• Administrator/root access (for network operations)
+• Firewall exceptions may be needed
+
+NETWORK:
+• Active network connection
+• WiFi or Ethernet
+• Access to local network
+
+12.2 DEPENDENCIES
+──────────────────
+Core Libraries:
+• PyQt5 >= 5.15.0 (GUI framework)
+• scapy >= 2.4.5 (Network scanning)
+• requests >= 2.25.0 (HTTP operations)
+• matplotlib >= 3.3.0 (Graphs/charts)
+• wakeonlan >= 2.0.0 (TV wake functionality)
+
+Standard Library:
+• socket (Network communications)
+• threading (Concurrency)
+• collections (Data structures)
+• datetime (Timestamps)
+• csv (Export functionality)
+• json (Configuration)
+
+12.3 INSTALLATION METHODS
+───────────────────────────
+
+METHOD 1: Automated Script (Recommended)
+
+Windows:
+1. Double-click install_and_run.bat
+2. Follow prompts
+3. Application starts automatically
+
+Linux/macOS:
+1. chmod +x install_and_run.sh
+2. ./install_and_run.sh
+3. Follow prompts
+
+METHOD 2: Manual Installation
+
+1. Install Python 3.7+
+2. Extract project files
+3. Open terminal in project directory
+4. Create virtual environment:
+   python -m venv venv
+5. Activate virtual environment:
+   Windows: venv\Scripts\activate
+   Linux/Mac: source venv/bin/activate
+6. Install dependencies:
+   pip install -r requirements.txt
+7. Run application:
+   Windows: python main.py (as Administrator)
+   Linux/Mac: sudo python main.py
+
+METHOD 3: Standalone Executable
+
+Use PyInstaller to create an .exe:
+1. pyinstaller WIFI_Manager.spec
+2. Find executable in dist/ folder
+3. Run without Python installed
+
+
+═══════════════════════════════════════════════════════════════════════════════
+13. 🔧 HOW IT WORKS (TECHNICAL DETAILS)
+═══════════════════════════════════════════════════════════════════════════════
+
+13.1 ARP SCANNING PROCESS
+───────────────────────────
+1. User enters CIDR range (e.g., 192.168.1.0/24)
+2. Application validates CIDR format
+3. Generates list of IP addresses to scan
+4. Creates ARP request packets for each IP
+5. Sends packets using Scapy
+6. Listens for ARP responses
+7. Collects MAC addresses from responses
+8. Optional: Performs ping for latency
+9. Resolves vendor from MAC OUI
+10. Updates UI with discovered devices
+
+ARP PACKET STRUCTURE:
+• Ethernet layer: Broadcast to ff:ff:ff:ff:ff:ff
+• ARP layer: Who has [target IP]?
+• Response contains: MAC address of target
+
+13.2 VENDOR LOOKUP (OUI)
+─────────────────────────
+1. Extract first 6 hex digits from MAC (e.g., 00:1A:2B)
+2. Search OUI database (downloaded from IEEE)
+3. Return manufacturer name
+4. Cache results for performance
+
+OUI DATABASE:
+• Downloaded from IEEE standards
+• Updated automatically
+• Contains ~30,000+ manufacturers
+• Stored locally for offline use
+
+13.3 DEVICE KICKING MECHANISM
+───────────────────────────────
+ARP SPOOFING TECHNIQUE:
+
+Normal Communication:
+Device → Router (correct MAC)
+
+During Kick:
+Device → App (spoofed as router MAC)
+↓
+App drops packets
+↓
+Device cannot reach internet
+
+PROCESS:
+1. Detect network gateway IP and MAC
+2. Create ARP responses claiming to be gateway
+3. Send spoofed packets to target device
+4. Send spoofed packets to gateway (both directions)
+5. Continue for specified duration
+6. Stop to restore connectivity
+
+13.4 MESSAGE DELIVERY
+──────────────────────
+
+WEB HIJACK PROCESS:
+1. Start ARP spoofing on target device
+2. Intercept HTTP requests
+3. Detect browser traffic (port 80)
+4. Inject HTML redirect response
+5. Browser displays message page
+6. Continue for specified duration
+7. Stop spoofing to restore normal browsing
+
+UDP/TCP MESSAGING:
+1. Create socket connection
+2. Send formatted message packet
+3. Target's listener receives and displays
+4. Close connection
+
+13.5 TV CONTROL
+────────────────
+
+WAKE-ON-LAN:
+1. Create magic packet (6×FF + 16×MAC)
+2. Send to broadcast address
+3. TV network card receives and powers on
+
+CEC COMMANDS:
+1. Detect TV brand from vendor
+2. Map command to brand-specific protocol
+3. Send HTTP/TCP command to TV IP
+4. TV processes command
+
+13.6 REAL-TIME MONITORING
+──────────────────────────
+1. QTimer triggers every 5 seconds
+2. Calculate current statistics
+3. Append to historical data (deque)
+4. Remove oldest data if > 60 points
+5. Redraw matplotlib graph
+6. Update stat cards
+7. Refresh UI without blocking
+
+
+═══════════════════════════════════════════════════════════════════════════════
+14. 💡 USE CASES & APPLICATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+14.1 HOME NETWORK MANAGEMENT
+─────────────────────────────
+• Identify all devices on home WiFi
+• Find unauthorized devices
+• Monitor children's device usage
+• Control Smart TV from computer
+• Kick unwanted guests off network
+• Track bandwidth usage
+
+14.2 OFFICE/BUSINESS
+─────────────────────
+• IT department network auditing
+• Employee device inventory
+• Guest network monitoring
+• Meeting room TV control
+• Network security audits
+• Bandwidth allocation
+
+14.3 CYBERSECURITY & TESTING
+─────────────────────────────
+• Penetration testing
+• Network security assessment
+• ARP spoofing demonstrations
+• Network topology mapping
+• Vulnerability scanning
+• Security awareness training
+
+14.4 TROUBLESHOOTING
+─────────────────────
+• Identify IP conflicts
+• Find ghost devices
+• Test network connectivity
+• Diagnose slow network issues
+• Verify DHCP assignments
+• Check device responsiveness
+
+14.5 SMART HOME INTEGRATION
+────────────────────────────
+• Discover IoT devices
+• Control smart TVs
+• Send notifications to devices
+• Monitor device health
+• Automate device management
+
+14.6 EDUCATION & LEARNING
+──────────────────────────
+• Network protocol education
+• ARP protocol demonstration
+• GUI development learning
+• Python programming practice
+• Network security concepts
+
+
+═══════════════════════════════════════════════════════════════════════════════
+15. 🔒 SECURITY CONSIDERATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+15.1 ETHICAL USE WARNING
+─────────────────────────
+⚠️ IMPORTANT: This tool includes powerful network manipulation features that
+must be used responsibly and ethically.
+
+LEGAL CONSIDERATIONS:
+• Only use on networks you own or have explicit permission to test
+• ARP spoofing may be illegal in some jurisdictions
+• Device kicking can disrupt critical services
+• Message hijacking may violate privacy laws
+• Always obtain proper authorization
+
+15.2 REQUIRED PERMISSIONS
+──────────────────────────
+The application requires administrator/root privileges because:
+• Raw socket access for ARP packets
+• Network interface manipulation
+• Packet injection capabilities
+• System-level network access
+
+15.3 SECURITY BEST PRACTICES
+──────────────────────────────
+FOR USERS:
+• Use only on your own network
+• Keep application access restricted
+• Monitor usage logs
+• Disable when not in use
+• Keep software updated
+
+FOR NETWORK ADMINS:
+• ARP spoofing detection can identify this tool
+• IDS/IPS systems may alert on ARP flooding
+• Monitor for unusual ARP traffic
+• Implement port security on switches
+• Use DHCP snooping where possible
+
+15.4 PRIVACY CONSIDERATIONS
+────────────────────────────
+• Device scanning reveals network topology
+• MAC addresses can identify device owners
+• Web hijacking intercepts traffic (temporarily)
+• Messages may contain sensitive information
+• Export files contain personal data
+
+RECOMMENDATIONS:
+• Encrypt exported CSV files
+• Secure the application directory
+• Delete old scan results
+• Use secure channels for sharing data
+
+
+═══════════════════════════════════════════════════════════════════════════════
+16. 🔧 TROUBLESHOOTING & SUPPORT
+═══════════════════════════════════════════════════════════════════════════════
+
+16.1 COMMON ISSUES
+───────────────────
+
+ISSUE: "Permission Denied" error
+SOLUTION: Run as Administrator (Windows) or with sudo (Linux/Mac)
+
+ISSUE: No devices found during scan
+SOLUTION: 
+• Verify CIDR range matches your network
+• Check firewall settings
+• Ensure network connection is active
+• Try increasing timeout value
+• Disable VPN if active
+
+ISSUE: Kick doesn't work
+SOLUTION:
+• Verify admin/root privileges
+• Check if gateway can be detected
+• Ensure target device is active
+• Try increasing kick duration
+• Verify no ARP protection on network
+
+ISSUE: TV control not working
+SOLUTION:
+• Ensure TV is on same network
+• Verify TV is powered on
+• Check TV network settings
+• Try Wake-on-LAN first
+• Verify TV brand is supported
+
+ISSUE: Messages not received
+SOLUTION:
+• Install message_listener.py on target
+• Check port availability (default 9999)
+• Verify firewall allows UDP/TCP
+• Try different protocol
+• Use Web Hijack method instead
+
+ISSUE: Graph not updating
+SOLUTION:
+• Wait 5 seconds for next update
+• Perform a scan to generate data
+• Check logs for errors
+• Restart application
+
+16.2 PERFORMANCE OPTIMIZATION
+───────────────────────────────
+SLOW SCANNING:
+• Reduce CIDR range (smaller network)
+• Decrease timeout value
+• Disable ping mode
+• Close other network applications
+
+HIGH CPU USAGE:
+• Reduce scan frequency
+• Disable monitoring graphs
+• Close unused tabs
+• Limit concurrent operations
+
+16.3 ERROR MESSAGES
+────────────────────
+
+"CIDR invalide":
+→ Format must be X.X.X.X/Y (e.g., 192.168.1.0/24)
+
+"Un scan est déjà en cours":
+→ Wait for current scan to complete
+
+"Erreur lors de la détection de l'IP":
+→ Check network connection
+
+"No kick is currently running":
+→ Start a kick operation first
+
+"Select a device in the table first":
+→ Click on a device row before performing action
+
+16.4 DEBUG MODE
+────────────────
+For troubleshooting, the application logs to console:
+• [DEBUG] messages show operation details
+• [ERROR] messages indicate failures
+• Check console output for detailed errors
+• Enable verbose logging in utils.py
+
+16.5 GETTING HELP
+──────────────────
+Documentation:
+• README.md - Quick start guide
+• USAGE.md - Detailed usage instructions
+• MESSAGE_FEATURE.md - Messaging system details
+• This file - Complete reference
+
+Support Resources:
+• Check STATUS_BAR links in application
+• Review logs tab for error details
+• Consult Python/Scapy documentation
+• PyQt5 documentation for UI issues
+
+16.6 KNOWN LIMITATIONS
+───────────────────────
+• ARP scanning only works on local network (same subnet)
+• Cannot scan devices behind NAT/firewall
+• TV control limited by brand support
+• Windows popup requires WinRM configuration
+• Web hijack requires HTTP traffic (not HTTPS)
+• Kick can be detected by IDS/IPS systems
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📌 CONCLUSION
+═══════════════════════════════════════════════════════════════════════════════
+
+WiFi Manager Pro is a comprehensive, feature-rich network management solution
+that combines professional-grade scanning, monitoring, and control capabilities
+with an intuitive, modern user interface.
+
+Whether you're a network administrator, IT professional, cybersecurity expert,
+or power user, this application provides the tools you need to understand,
+monitor, and manage your network effectively.
+
+KEY STRENGTHS:
+✓ Complete feature set (scan, monitor, control, message, kick)
+✓ Professional UI with real-time updates
+✓ Advanced device management capabilities
+✓ Smart TV control system
+✓ Multi-protocol messaging
+✓ Real-time monitoring and analytics
+✓ Cross-platform compatibility
+✓ Well-documented and maintainable code
+
+PERFECT FOR:
+• Network administrators
+• IT departments
+• Cybersecurity professionals
+• Home network power users
+• Smart home enthusiasts
+• Educational institutions
+• Penetration testers
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PROJECT VERSION: 3.0.0
+LAST UPDATED: January 2026
+PLATFORM: Windows, Linux, macOS
+LICENSE: Educational/Research Use
+
+═══════════════════════════════════════════════════════════════════════════════
+END OF DOCUMENT
+═══════════════════════════════════════════════════════════════════════════════

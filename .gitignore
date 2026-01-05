@@ -1,0 +1,40 @@
+# Environnement virtuel
+venv/
+env/
+ENV/
+
+# Cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution
+dist/
+build/
+*.egg-info/
+*.egg
+
+# PyInstaller
+*.manifest
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Cache OUI
+~/.wifi_manager/
+
+# Fichiers de test
+.pytest_cache/
+.coverage
+
+# CSV exports (résultats de scan)
+scan_results_*.csv
+
+# Logs
+*.log
