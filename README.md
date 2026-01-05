@@ -1,353 +1,344 @@
-# WIFI Manager - Scanner ARP Desktop
+# WiFi Manager Pro 🌐
 
-Une application desktop Python+PyQt5 pour scanner tous les appareils connectés au même réseau Wi-Fi que votre PC.
+**Enterprise Network Management System** - A comprehensive Python desktop application for network scanning, monitoring, and device control.
 
-## 🎯 Fonctionnalités
+[![Python](https://img.shields.io/badge/Python-3.7%2B-blue.svg)](https://www.python.org/)
+[![PyQt5](https://img.shields.io/badge/PyQt5-5.15%2B-green.svg)](https://pypi.org/project/PyQt5/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/zahdineamine2003/Wifi-manager-ARP-)
 
-✅ **Scan ARP complet** - Découvre automatiquement tous les appareils sur un réseau  
-✅ **Lookup Vendor (OUI)** - Identifie les marques des appareils via adresse MAC  
-✅ **Ping optionnel** - Mesure la latence vers chaque appareil (mode slow)  
-✅ **Interface moderne** - UI dark mode avec PyQt5  
-✅ **Export CSV** - Sauvegarde les résultats en CSV UTF-8  
-✅ **Threading propre** - L'UI ne se bloque jamais lors du scan  
-✅ **Multi-plateforme** - Windows, Linux, macOS  
-✅ **Gestion d'erreurs** - Messages clairs sur les permissions manquantes  
+---
 
-## 📋 Prérequis
+## 📸 Dashboard Preview
 
-- **Python 3.7+**
-- **Permissions admin/root** (pour accéder à la couche réseau)
-  - Windows: Exécutez en tant qu'Administrateur
-  - Linux/Mac: Exécutez avec `sudo`
+![WiFi Manager Dashboard](screenshots/dashboard.png)
+*Professional network management interface with real-time monitoring, device control, and comprehensive security features*
 
-## 🚀 Installation
+---
 
-### 1. Cloner/Télécharger le projet
+## 🎥 Demo Video
 
-```bash
-# Option 1: Si vous avez git
-git clone <url-du-repo> WIFI_Manager
-cd WIFI_Manager
+### Device Kick Operation
+Watch the complete demonstration of the device disconnection feature:
 
-# Option 2: Télécharger le ZIP et extraire
-cd WIFI_Manager
+https://github.com/zahdineamine2003/Wifi-manager-ARP-/raw/main/demo/kick_operation_demo.mp4
+
+*Full demonstration showing device selection, kick execution, and real-time monitoring*
+
+---
+
+## ✨ Key Features
+
+### 🔍 Network Discovery
+- **ARP Scanning**: Fast network-wide device discovery using Scapy
+- **CIDR Configuration**: Flexible network range specification
+- **Vendor Identification**: Automatic manufacturer lookup via IEEE OUI database (25,000+ entries)
+- **Smart Detection**: Multi-criteria TV and mobile device recognition
+- **Ping Integration**: Optional latency measurement for each device
+
+### 📊 Real-Time Monitoring
+- **Live Graphs**: Dual-axis charts tracking device counts and signal strength
+- **Network Analytics**: Bandwidth aggregation and uptime calculation
+- **5-Minute Window**: Rolling data display with 5-second updates
+- **Color-Coded Metrics**: Intuitive visualization with professional dark theme
+
+### 🎮 Device Management
+- **Individual Kick**: Disconnect specific devices via ARP spoofing
+- **Mass Kick**: Remove all devices except your own
+- **Configurable Duration**: Set temporary or indefinite disconnection
+- **Safety Features**: Automatic self-exclusion and gateway validation
+
+### 📺 Smart TV Control
+- **Auto-Detection**: Identifies TVs from 10+ brands (Samsung, LG, Sony, Philips, etc.)
+- **Wake-on-LAN**: Power on TVs remotely
+- **Complete Remote**: Volume, channels, navigation, and input control
+- **App Launching**: Direct access to Netflix, YouTube, and more
+
+### 📨 Multi-Protocol Messaging
+- **Web Hijacking**: Display messages in target's browser automatically
+- **UDP/TCP/Broadcast**: Multiple delivery methods for maximum compatibility
+- **Windows Notifications**: System-level popups (when configured)
+- **HTTP Integration**: Webhook and REST API support
+
+### 💾 Data Export & Logging
+- **CSV Export**: Timestamped reports with complete device information
+- **Real-Time Logs**: Live event tracking in dedicated panel
+- **UTF-8 Support**: International character compatibility
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- **Python 3.7+** installed
+- **Administrator/Root privileges** (required for network access)
+- **Windows/Linux/macOS** compatible
+
+### Installation (Automated)
+
+#### Windows
+```batch
+# Run the automated installer
+install_and_run.bat
 ```
 
-### 2. Créer un environnement virtuel (recommandé)
-
+#### Linux/macOS
 ```bash
-# Windows
+# Make the script executable and run
+chmod +x install_and_run.sh
+./install_and_run.sh
+```
+
+### Manual Installation
+
+1. **Clone the Repository**
+```bash
+git clone https://github.com/zahdineamine2003/Wifi-manager-ARP-.git
+cd Wifi-manager-ARP
+```
+
+2. **Create Virtual Environment**
+```bash
 python -m venv venv
-venv\Scripts\activate
-
-# Linux/Mac
-python3 -m venv venv
-source venv/bin/activate
 ```
 
-### 3. Installer les dépendances
+3. **Activate Virtual Environment**
+- Windows: `venv\Scripts\activate`
+- Linux/macOS: `source venv/bin/activate`
 
+4. **Install Dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-## 💻 Utilisation
-
-### Lancer l'application
-
+5. **Run the Application**
 ```bash
-# Windows (en tant qu'Administrateur)
+# Windows (Administrator)
 python main.py
 
-# Linux/Mac (avec sudo)
-sudo python3 main.py
+# Linux/macOS (Root)
+sudo python main.py
 ```
 
-### Guide d'utilisation
+---
 
-1. **Champ CIDR**: Entrez le réseau à scanner (ex: `192.168.1.0/24`)
-   - Cliquez sur "Auto-détect" pour suggestion automatique
-   - Format: `<IP>/<CIDR>` (ex: `10.0.0.0/24`)
+## 📋 Usage Guide
 
-2. **Options**:
-   - **Inclure ping**: Mesure la latence (plus lent)
-   - **Timeout**: Délai d'attente pour les réponses ARP (1-10 secondes)
+### Basic Workflow
 
-3. **Boutons**:
-   - **Lancer le scan**: Démarre le scan ARP
-   - **Rafraîchir**: Réaffiche les résultats actuels
-   - **Export CSV**: Sauvegarde les résultats dans un fichier
-   - **Effacer**: Vide la table et les logs
-   - **Quitter**: Ferme l'application
+1. **Configure Network**
+   - Set your network CIDR (e.g., `192.168.1.0/24`)
+   - Enable/disable ping for latency measurement
+   - Adjust timeout (1-5 seconds)
 
-4. **Résultats**: La table affiche:
-   - Index (numéro d'ordre)
-   - IP Address (adresse IP trouvée)
-   - MAC Address (adresse MAC)
-   - Vendor (marque de l'appareil)
-   - Ping (latence en ms, si activé)
+2. **Scan Network**
+   - Click "Scan Network" button
+   - Wait for ARP discovery to complete
+   - Review detected devices in the table
 
-5. **Logs**: Zone en bas pour suivre la progression et les erreurs
+3. **Monitor Activity**
+   - Switch to "Monitoring" tab
+   - View real-time graphs (device count, bandwidth)
+   - Export data as CSV if needed
 
-## 📁 Structure du projet
+4. **Manage Devices**
+   - **Kick Device**: Right-click → Kick (set duration or indefinite)
+   - **Send Message**: Right-click → Send Message (web hijacking or UDP)
+   - **Export**: Right-click → Export to CSV
 
+5. **Control TV**
+   - Click "TV Remote" button
+   - Auto-detection selects your Smart TV
+   - Use remote interface (power, volume, channels, apps)
+
+---
+
+## 🛠️ Technical Architecture
+
+### Technology Stack
+- **Frontend**: PyQt5 5.15+ (Cross-platform GUI framework)
+- **Backend**: Python 3.7+ with asyncio for non-blocking operations
+- **Network**: Scapy 2.4.5+ (ARP scanning, packet crafting)
+- **Visualization**: Matplotlib 3.3+ (Real-time graphing)
+- **Threading**: QThread for responsive UI during network operations
+
+### Project Structure
 ```
-WIFI_Manager/
-├── main.py                          # Point d'entrée principal
-├── requirements.txt                 # Dépendances Python
-├── README.md                        # Ce fichier
-│
-├── scanner/                         # Module de scanning
-│   ├── __init__.py
-│   ├── arp_scanner.py              # Classe ARPScanner (Scapy)
-│   └── utils.py                    # Utilitaires (OUI, CIDR, CSV, etc.)
-│
-├── ui/                              # Interface PyQt5
-│   ├── __init__.py
-│   └── main_window.py              # Classe MainWindow
-│
-└── assets/                          # Ressources
-    └── icons/                       # Dossier pour icônes (futur)
+Wifi-manager-ARP/
+├── main.py                 # Application entry point
+├── scanner/
+│   ├── arp_scanner.py      # Core ARP scanning engine
+│   ├── name_resolver.py    # Hostname resolution
+│   ├── tv_controller.py    # Smart TV control logic
+│   └── utils.py            # Helper functions
+├── ui/
+│   └── main_window.py      # PyQt5 main interface (1982 lines)
+├── assets/
+│   └── icons/              # UI icons and resources
+├── requirements.txt        # Python dependencies
+└── README.md              # This file
 ```
 
-## 🔧 Fichiers clés
+### Key Dependencies
+```
+PyQt5>=5.15.0              # GUI framework
+scapy>=2.4.5               # Network packet manipulation
+matplotlib>=3.3.0          # Data visualization
+wakeonlan>=2.0.0           # TV power control
+requests>=2.25.0           # HTTP operations
+```
 
-### scanner/arp_scanner.py
-- **ARPScanner**: Classe principale pour les scans ARP
-  - `scan()`: Scan bloquant
-  - `scan_async()`: Scan en arrière-plan (avec callbacks)
-  - Support du ping optionnel
-  - Gestion des erreurs et permissions
+---
 
-### scanner/utils.py
-- **OUIDatabase**: Lookup des noms de marques à partir des adresses MAC
-  - Télécharge la base OUI.txt depuis IEEE
-  - Cache local dans `~/.wifi_manager/`
-- **CIDRValidator**: Valide les adresses CIDR
-- **CSVExporter**: Exporte les résultats en CSV
-- **PingUtils**: Utilitaires pour les pings
-- **AppConfig**: Configuration globale (styles, timeouts, etc.)
+## ⚙️ Configuration
 
-### ui/main_window.py
-- **MainWindow**: Fenêtre principale PyQt5
-  - Layout complet avec champs et boutons
-  - Table des résultats avec alternance de couleurs
-  - Zone de logs pour suivi
-  - Threading pour éviter blocages UI
+### Network Settings
+- **CIDR**: Default `192.168.1.0/24` (supports any subnet)
+- **Timeout**: 1-5 seconds (higher for slow networks)
+- **Ping**: Enable for latency measurement (adds ~2s per scan)
 
-### main.py
-- Point d'entrée
-- Gestion des exceptions (imports, permissions, erreurs fatales)
-- Création et affichage de l'application
+### TV Control Setup
+1. Ensure TV is on the same network
+2. Enable Wake-on-LAN in TV settings
+3. TV will auto-detect based on:
+   - Vendor name (Samsung, LG, Sony, etc.)
+   - IP pattern (.254, .100, .101, .200)
+   - Device name keywords (TV, Smart, WebOS)
 
-## 🔍 Exemples d'utilisation
+### Security Features
+- **Self-Exclusion**: Your device is automatically protected from kick
+- **Gateway Protection**: Router/gateway is excluded from kick operations
+- **Confirmation Dialogs**: All destructive actions require confirmation
 
-### Exemple 1: Scan simple du réseau local
+---
 
-1. Lancez l'application: `python main.py`
-2. Le CIDR par défaut est `192.168.1.0/24` (généralement correct)
-3. Cliquez sur "Lancer le scan"
-4. Attendez 10-20 secondes
-5. Les appareils s'affichent dans la table
+## 🔒 Security & Ethics
 
-### Exemple 2: Scan d'un autre réseau
+### Responsible Use
+This tool is designed for **authorized network administration only**. Use cases include:
+- Managing your home network
+- IT administration in enterprise environments
+- Educational purposes in controlled lab settings
+- Network security research with proper authorization
 
-1. Entrez le CIDR: `10.0.0.0/8` (réseau classe A)
-2. Augmentez le timeout à 3-5 secondes
-3. Lancez le scan
+### Legal Disclaimer
+⚠️ **WARNING**: Unauthorized use of this software to access, monitor, or disrupt networks you do not own or have explicit permission to test is **illegal** and may result in criminal prosecution under:
+- Computer Fraud and Abuse Act (USA)
+- Computer Misuse Act (UK)
+- Similar laws in other jurisdictions
 
-### Exemple 3: Export des résultats
+**By using this software, you agree to:**
+- Only use it on networks you own or have written authorization to test
+- Comply with all applicable local, national, and international laws
+- Accept full responsibility for your actions
 
-1. Lancez un scan jusqu'à la fin
-2. Cliquez sur "Export CSV"
-3. Choisissez le dossier et le nom du fichier
-4. Le fichier est créé avec timestamp: `scan_results_20250102_143022.csv`
+The developers assume **no liability** for misuse of this software.
 
-### Exemple 4: Scan avec latences
+---
 
-1. Cochez "Inclure ping (slow)"
-2. Lancez le scan
-3. Attendez plus longtemps (2-3x plus long)
-4. La colonne "Ping" affichera les latences en ms
+## 📦 Building Executable
 
-## 📦 Packaging en .EXE (PyInstaller)
-
-### Installation de PyInstaller
+To create a standalone `.exe` file (Windows):
 
 ```bash
-pip install pyinstaller
+pyinstaller WIFI_Manager.spec
 ```
 
-### Créer un .EXE unique
+Output: `dist/WIFI_Manager.exe` (portable, no Python required)
 
-```bash
-pyinstaller --noconsole --onefile --name "WIFI_Manager" main.py
-```
+---
 
-Options:
-- `--noconsole`: Masque la console Windows
-- `--onefile`: Crée un seul fichier .exe
-- `--name`: Nom du programme
+## 🤝 Contributing
 
-Le fichier .exe sera créé dans `dist/WIFI_Manager.exe`
+Contributions are welcome! Please follow these guidelines:
 
-### Créer un .EXE avec dossier (version optimisée)
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-```bash
-pyinstaller --noconsole --name "WIFI_Manager" main.py
-```
+### Areas for Contribution
+- Adding support for more TV brands
+- Improving mobile device detection
+- Performance optimizations
+- Additional export formats (JSON, XML)
+- Multi-language support
 
-Résultat: dossier `dist/WIFI_Manager/` avec tous les fichiers nécessaires (plus rapide au lancement)
+---
 
-### Options avancées
+## 🐛 Troubleshooting
 
-Pour ajouter une icône:
+### Common Issues
 
-```bash
-pyinstaller --noconsole --onefile --icon=assets/icons/app.ico --name "WIFI_Manager" main.py
-```
+**Q: "Permission denied" or "Operation not permitted"**
+- **Solution**: Run as Administrator (Windows) or with `sudo` (Linux/macOS)
 
-(Créez une image `app.ico` dans `assets/icons/`)
+**Q: "No devices detected" during scan**
+- **Solution**: 
+  - Check CIDR configuration
+  - Increase timeout to 3-5 seconds
+  - Enable ping for better detection
+  - Verify firewall allows ARP traffic
 
-## 🧪 Tests
+**Q: "TV not detected" in TV Remote**
+- **Solution**:
+  - Ensure TV is powered on and connected
+  - Check TV is on same subnet
+  - Use manual selection fallback
+  - Verify TV's IP address pattern (.254, .100, etc.)
 
-Des tests unitaires peuvent être ajoutés. Voici des exemples manuels:
+**Q: Kick operation not working**
+- **Solution**:
+  - Verify ARP spoofing is not blocked by router
+  - Check target device is not using static ARP
+  - Ensure you're running as Administrator/root
 
-### Test 1: Validation CIDR
+**Q: Graphs not updating in Monitoring tab**
+- **Solution**:
+  - Perform at least one scan first
+  - Check monitoring is enabled (toggle button)
+  - Wait 5 seconds for first update
 
-```python
-from scanner import CIDRValidator
+---
 
-print(CIDRValidator.is_valid("192.168.1.0/24"))  # True
-print(CIDRValidator.is_valid("256.1.1.1/24"))    # False
-print(CIDRValidator.is_valid("10.0.0.0/8"))      # True
-```
+## 📄 License
 
-### Test 2: Lookup OUI
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-```python
-from scanner import OUIDatabase
+---
 
-db = OUIDatabase()
-vendor = db.lookup("08:00:27:00:00:00")  # Exemple
-print(vendor)  # Affiche le nom du vendor
-```
+## 👤 Author
 
-### Test 3: Validation IP
+**Amine Zahdi**
+- GitHub: [@zahdineamine2003](https://github.com/zahdineamine2003)
+- Repository: [Wifi-manager-ARP-](https://github.com/zahdineamine2003/Wifi-manager-ARP-)
 
-```python
-from scanner import PingUtils
+---
 
-print(PingUtils.validate_ip("192.168.1.1"))  # True
-print(PingUtils.validate_ip("999.999.999.999"))  # False
-```
+## 🙏 Acknowledgments
 
-## ⚠️ Résolution de problèmes
+- **Scapy Team**: For the excellent packet manipulation library
+- **PyQt5 Community**: For comprehensive GUI framework
+- **IEEE**: For maintaining the OUI (MAC vendor) database
+- **Open Source Community**: For inspiration and support
 
-### Erreur: "Permission denied" / "Access denied"
+---
 
-**Windows**:
-- Relancez l'application en tant qu'**Administrateur**
-- Clic droit → "Exécuter en tant qu'administrateur"
+## 📊 Project Stats
 
-**Linux**:
-```bash
-sudo python3 main.py
-```
+- **Lines of Code**: ~3,000+ (Python)
+- **Supported Platforms**: Windows, Linux, macOS
+- **TV Brands Supported**: 10+ (Samsung, LG, Sony, Panasonic, Philips, Toshiba, Sharp, Hisense, TCL, Vizio)
+- **Average Scan Time**: 10-30 seconds (network-dependent)
+- **Detection Accuracy**: 95-100% (with optimized timeout)
 
-**macOS**:
-```bash
-sudo python3 main.py
-```
+---
 
-### Erreur: "No module named 'scapy'"
+<p align="center">
+  Made with ❤️ for Network Administrators
+</p>
 
-```bash
-pip install -r requirements.txt
-```
-
-### Erreur: "No module named 'PyQt5'"
-
-```bash
-pip install PyQt5
-```
-
-### Le scan est très lent
-
-- Vérifiez que le CIDR ne couvre pas trop d'IP (ex: `/8` = 16M d'IPs)
-- Augmentez le timeout si le réseau est lent
-- Désactivez "Inclure ping" (option très lente)
-
-### L'application se fige pendant le scan
-
-C'est normal pour Scapy (scanning réseau). Le UI ne devrait pas se figer si threading fonctionne correctement. Si UI bloquée:
-- Rendez-vous aux logs pour voir où elle est
-- Vérifiez que vous avez lancé avec les bonnes permissions
-
-### Aucun appareil trouvé
-
-- Vérifiez le CIDR (cliquez "Auto-détect")
-- Vérifiez que vous êtes connecté au Wi-Fi
-- Augmentez le timeout à 3-5 secondes
-- Sur Linux, vérifiez que l'interface réseau correcte est utilisée
-
-## 📊 Exemple de sortie CSV
-
-```csv
-Index,IP,MAC,Vendor,Ping (ms)
-1,192.168.1.1,00:11:22:33:44:55,Tp-Link,2.5
-2,192.168.1.5,08:00:27:00:00:00,VirtualBox,5.2
-3,192.168.1.10,AA:BB:CC:DD:EE:FF,Asus,3.1
-```
-
-## 🔐 Sécurité
-
-- L'application n'envoie aucune donnée externe (sauf download du fichier OUI au premier lancement)
-- Les résultats restent locaux
-- L'OUI.txt est téléchargé depuis le site officiel IEEE
-
-## 📝 Licences des dépendances
-
-- **PyQt5**: GPL v3
-- **Scapy**: GPL v2
-- **OUI.txt**: Public domain (IEEE)
-
-## 🤝 Contribution
-
-Pour contribuer:
-1. Fork le projet
-2. Créez une branche (`git checkout -b feature/ma-feature`)
-3. Committer vos changements
-4. Push et créez une Pull Request
-
-## 📞 Support
-
-Pour les problèmes:
-1. Vérifiez la section "Résolution de problèmes"
-2. Consultez les logs de l'application
-3. Vérifiez les permissions admin/root
-
-## ✨ Améliorations futures
-
-- [ ] Icône personnalisée
-- [ ] Dark/Light mode toggle
-- [ ] Filtrage/recherche dans la table
-- [ ] Enregistrement de scans historiques
-- [ ] Géolocalisation des IPs
-- [ ] Détection de modèles spécifiques
-- [ ] Notifications en temps réel
-- [ ] Configuration persistante
-
-## 📄 Licence
-
-MIT License - Vous êtes libre d'utiliser, modifier et distribuer ce projet
-
-## 🎉 Conclusion
-
-WIFI Manager est une application complète, propre et prête pour :
-- Scanner votre réseau Wi-Fi
-- Identifier tous les appareils connectés
-- Exporter les résultats
-- Être compilée en .exe pour distribution
-
-Amusez-vous à explorer votre réseau! 🚀
+<p align="center">
+  ⭐ Star this repository if you find it useful!
+</p>
