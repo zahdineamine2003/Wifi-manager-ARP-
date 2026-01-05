@@ -19,11 +19,12 @@
 ## 🎥 Demo Video
 
 ### Device Kick Operation
-Watch the complete demonstration of the device disconnection feature:
 
-https://github.com/zahdineamine2003/Wifi-manager-ARP-/raw/main/demo/kick_operation_demo.mp4
+[![Watch Demo Video](https://img.shields.io/badge/▶️_Watch-Demo_Video-red?style=for-the-badge&logo=youtube)](https://github.com/zahdineamine2003/Wifi-manager-ARP-/raw/main/demo/kick_operation_demo.mp4)
 
-*Full demonstration showing device selection, kick execution, and real-time monitoring*
+*Click the button above to watch the complete demonstration: device selection, kick execution, and real-time monitoring*
+
+> **Note:** To view inline, you can also download the video from [demo/kick_operation_demo.mp4](demo/kick_operation_demo.mp4)
 
 ---
 
